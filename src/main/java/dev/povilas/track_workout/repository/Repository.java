@@ -3,8 +3,8 @@ package dev.povilas.track_workout.repository;
 import dev.povilas.track_workout.model.Training;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @org.springframework.stereotype.Repository
@@ -14,7 +14,11 @@ public class Repository {
     String userName = "sa";
     String password = "";
 
-    public void addTraining(Date date,
+
+    public void isTrainingInDB() {
+
+    }
+    public void addTraining(LocalDateTime date,
                             String muscle,
                             String exercise,
                             Integer kg,
@@ -58,7 +62,7 @@ public class Repository {
              ResultSet resultSet = statement.executeQuery(query)) {
 
             while (resultSet.next()) {
-                Training training = new Training(resultSet.getDate(1),
+                Training training = new Training(resultSet.getObject(1, LocalDateTime.class),
                         resultSet.getString(2),
                         resultSet.getString(3),
                         resultSet.getInt(4),

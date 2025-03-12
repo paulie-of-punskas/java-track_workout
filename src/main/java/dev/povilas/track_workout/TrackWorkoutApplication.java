@@ -9,6 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import javax.xml.transform.Result;
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +23,7 @@ public class TrackWorkoutApplication {
 		Repository repository = new Repository();
 		System.out.println(repository.readAllTrainings());
 
-		repository.addTraining(Date.valueOf("2025-03-10"), "abs", "crunch", 0, 3, 0, 45, 0, "");
+		repository.addTraining(LocalDateTime.parse("2025-03-10T08:30:00"), "abs", "crunch", 0, 3, 0, 45, 0, "");
 
 //		List<Training> trainings = repository.readAllTrainings();
 //		System.out.println(trainings);

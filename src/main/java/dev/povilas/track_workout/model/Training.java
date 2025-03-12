@@ -1,9 +1,9 @@
 package dev.povilas.track_workout.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public record Training(
-        Date date,
+        LocalDateTime date,
         String muscle,
         String exercise,
         Integer kg,
