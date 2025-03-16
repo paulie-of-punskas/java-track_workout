@@ -6,13 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import javax.xml.transform.Result;
 import java.sql.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @SpringBootApplication
 public class TrackWorkoutApplication {
@@ -30,11 +25,7 @@ public class TrackWorkoutApplication {
 		Training newTraining = new Training(LocalDateTime.now(), "abs", "crunch", 0, 3, 0, 45, 0, "training object");
 		repository.addTraining(newTraining);
 
-//		for (int j = 0; j < trainingsList.size(); j++) {
-//			System.out.println(trainingsList.get(j));
-//		}
-
-		// print all Beans
+//		 print all Beans
 //		Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
 	}
 

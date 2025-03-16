@@ -15,7 +15,15 @@ public class Repository {
     String password = "";
 
 
-    public void isTrainingInDB() {
+    public boolean isTrainingInDB(Training training) {
+        List<Training> allTrainings = readAllTrainings();
+        for (int j = 0; j <= allTrainings.size(); j++) {
+            if (allTrainings.get(j).time().equals(training.time())) {
+                return true;
+            }
+        }
+        return false;
+//        allTrainings.forEach(s -> System.out.println(s.time()));
     }
 
     public void addTraining(Training training) {
