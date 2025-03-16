@@ -16,8 +16,36 @@ public class Repository {
 
 
     public void isTrainingInDB() {
-
     }
+
+    public void addTraining(Training training) {
+        String query = "INSERT INTO workouts (date, muscle, exercise, kg, rep, distance, time, cal, comment) " +
+                "VALUES ('"
+                + training.date() + "', '"
+                + training.muscle() + "', '"
+                + training.exercise() + "', '"
+                + training.kg() + "', '"
+                + training.rep() + "', '"
+                + training.distance() + "', '"
+                + training.time() + "', '"
+                + training.cal() + "', '"
+                + training.comment() +
+                "')";
+
+        try (Connection connection = DriverManager.getConnection(url, userName, password);
+             Statement statement = connection.createStatement();) {
+            int queryStatus = statement.executeUpdate(query);
+            if (queryStatus > 0) {
+                System.out.println(">> Records were added.");
+            } else {
+                System.out.println(">> Records could not be added.");
+            }
+        } catch (SQLException e) {
+            System.out.println(">> SQLException occurred in addTraining()");
+            System.out.println(">>   " + e.getMessage());
+        }
+    }
+
     public void addTraining(LocalDateTime date,
                             String muscle,
                             String exercise,

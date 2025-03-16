@@ -23,10 +23,12 @@ public class TrackWorkoutApplication {
 		Repository repository = new Repository();
 		System.out.println(repository.readAllTrainings());
 
+		// sitas veikia, jeigu addTraining() nepriema objekto
 		repository.addTraining(LocalDateTime.parse("2025-03-10T08:30:00"), "abs", "crunch", 0, 3, 0, 45, 0, "");
 
-//		List<Training> trainings = repository.readAllTrainings();
-//		System.out.println(trainings);
+		// sukuriam objekta ir paduodam ji i addTraining()
+		Training newTraining = new Training(LocalDateTime.now(), "abs", "crunch", 0, 3, 0, 45, 0, "training object");
+		repository.addTraining(newTraining);
 
 //		for (int j = 0; j < trainingsList.size(); j++) {
 //			System.out.println(trainingsList.get(j));
