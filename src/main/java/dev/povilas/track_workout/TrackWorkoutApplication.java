@@ -16,7 +16,7 @@ public class TrackWorkoutApplication {
 		ConfigurableApplicationContext context = SpringApplication.run(TrackWorkoutApplication.class, args);
 
 		Repository repository = new Repository();
-		System.out.println(repository.readAllTrainings());
+		System.out.println(repository.getAllTrainings());
 
 		// sitas veikia, jeigu addTraining() nepriema objekto
 		repository.addTraining(LocalDateTime.parse("2025-03-10T08:30:00"), "abs", "crunch", 0, 3, 0, 45, 0, "");

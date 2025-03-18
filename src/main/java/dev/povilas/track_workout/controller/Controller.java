@@ -28,7 +28,7 @@ public class Controller {
 
     @GetMapping("/get_all_trainings")
     public List<Training> getAllWorkouts() {
-        return repository.readAllTrainings();
+        return repository.getAllTrainings();
     }
 
     @PostMapping("/submit_training")

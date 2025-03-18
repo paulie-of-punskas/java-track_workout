@@ -14,16 +14,14 @@ public class Repository {
     String userName = "sa";
     String password = "";
 
-
     public boolean isTrainingInDB(Training training) {
-        List<Training> allTrainings = readAllTrainings();
-        for (int j = 0; j <= allTrainings.size(); j++) {
+        List<Training> allTrainings = getAllTrainings();
+        for (int j = 0; j < allTrainings.size(); j++) {
             if (allTrainings.get(j).time().equals(training.time())) {
                 return true;
             }
         }
         return false;
-//        allTrainings.forEach(s -> System.out.println(s.time()));
     }
 
     public void addTraining(Training training) {
@@ -90,7 +88,7 @@ public class Repository {
         }
     }
 
-    public List<Training> readAllTrainings() {
+    public List<Training> getAllTrainings() {
         List<Training> trainingsList = new ArrayList<>();
         String query = "SELECT * FROM workouts";
         try (Connection connection = DriverManager.getConnection(url, userName, password);
