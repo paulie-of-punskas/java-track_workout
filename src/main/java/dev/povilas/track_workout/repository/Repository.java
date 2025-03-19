@@ -61,6 +61,7 @@ public class Repository {
                             Integer time,
                             Integer cal,
                             String comment) {
+
         String query = String.valueOf("INSERT INTO " +
                 System.getenv("AZURE_TABLE_NAME") + " (date, muscle, exercise, kg, rep, comment, distance, time, cal) " +
                 "VALUES ('"

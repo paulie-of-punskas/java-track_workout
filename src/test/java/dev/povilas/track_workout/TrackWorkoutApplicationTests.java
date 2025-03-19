@@ -2,6 +2,7 @@ package dev.povilas.track_workout;
 
 import dev.povilas.track_workout.model.Training;
 import dev.povilas.track_workout.repository.Repository;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -42,6 +43,7 @@ class TrackWorkoutApplicationTests {
 		assertFalse(repository.isTrainingInDB(testTraining));
 	}
 
+	@Disabled("Disabled so that DB does not get polluted.")
 	@Test
 	@DisplayName("Create training, submit it.")
 	void submittedTrainingIsAvailable() {
