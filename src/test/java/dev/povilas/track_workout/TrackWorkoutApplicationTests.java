@@ -27,10 +27,11 @@ class TrackWorkoutApplicationTests {
 	@Test
 	@DisplayName("Create training, but do not submit it.")
 	void trainingNotAvailable() {
-		var testTraining = new Training(LocalDateTime.parse("2020-12-31T00:00:00"),
+		var testTraining = new Training(
+				String.valueOf(LocalDateTime.parse("2020-12-31T00:00:00")),
 				"",
 				"exercise",
-				0,
+				0.00,
 				0,
 				0,
 				0,
@@ -45,7 +46,7 @@ class TrackWorkoutApplicationTests {
 	@DisplayName("Create training, submit it.")
 	void submittedTrainingIsAvailable() {
 		Repository repository = new Repository();
-		Training testTraining = new Training(LocalDateTime.parse("2025-03-10T08:30:00"), "abs", "crunch", 0, 3, 0, 45, 0, "");
+		Training testTraining = new Training(String.valueOf(LocalDateTime.parse("2025-03-10T08:30:00")), "abs", "crunch", 0.00, 3, 0, 45, 0, "");
 		assertTrue(repository.isTrainingInDB(testTraining));
 	}
 }

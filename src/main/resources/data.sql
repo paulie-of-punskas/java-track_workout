@@ -58,6 +58,11 @@ INSERT INTO workouts (date, muscle, exercise, kg, rep, distance, time, cal, comm
            ('2025-03-05', 'abs', 'side plank, left', 0, 3, 0, 60, 0, ''),
            ('2025-03-05', 'abs', 'side plank, right', 0, 3, 0, 60, 0, ''),
            ('2025-03-05', 'abs', 'plank', 0, 3, 0, 60, 0, ''),
-           ('2025-03-05', 'abs', 'superman', 0, 3, 0, 60, 0, '')
-
+           ('2025-03-05', 'abs', 'superman', 0, 3, 0, 60, 0, ''),
+           ('2025-03-18', 'abs', 'squeeze', 0, 3, 0, 60, 0, ''),
+           ('2025-03-18', 'abs', 'crunch', 0, 3, 0, 60, 0, ''),
+           ('2025-03-18', 'abs', 'side plank, left', 0, 3, 0, 60, 0, ''),
+           ('2025-03-18', 'abs', 'side plank, right', 0, 3, 0, 60, 0, ''),
+           ('2025-03-18', 'abs', 'plank', 0, 3, 0, 60, 0, ''),
+           ('2025-03-18', 'abs', 'superman', 0, 3, 0, 60, 0, '')
 ;

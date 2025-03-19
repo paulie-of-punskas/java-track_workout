@@ -16,9 +16,11 @@ public class Controller {
     @Autowired
     Repository repository;
 
+    java.util.logging.Logger logger =  java.util.logging.Logger.getLogger(this.getClass().getName());
+
     @GetMapping("/")
     public void index() {
-        System.out.println("Kazkas atejo");
+        logger.info("Kazkas atejo");
     }
 
     @GetMapping("/labas")
@@ -27,7 +29,7 @@ public class Controller {
     }
 
     @GetMapping("/get_all_trainings")
-    public List<Training> getAllWorkouts() {
+    public List<Training> returnAllWorkouts() {
         return repository.getAllTrainings();
     }
 
