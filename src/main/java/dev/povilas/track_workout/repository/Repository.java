@@ -33,11 +33,10 @@ public class Repository {
                 + training.exercise() + "', '"
                 + training.kg() + "', '"
                 + training.rep() + "', '"
-                + training.distance() + "', '"
+                + training.comment() + "', '"
+                + training.distance() + "', "
                 + training.time() + "', '"
-                + training.cal() + "', '"
-                + training.comment() +
-                "')";
+                + training.cal() + "')";
 
         try (Connection connection = DriverManager.getConnection(url, userName, password);
              Statement statement = connection.createStatement();) {
@@ -63,7 +62,7 @@ public class Repository {
                             Integer cal,
                             String comment) {
         String query = String.valueOf("INSERT INTO " +
-                System.getenv("AZURE_TABLE_NAME") + " (date, muscle, exercise, kg, rep, distance, time, cal, comment) " +
+                System.getenv("AZURE_TABLE_NAME") + " (date, muscle, exercise, kg, rep, comment, distance, time, cal) " +
                 "VALUES ('"
                 + date + "', '"
                 + muscle + "', '"
