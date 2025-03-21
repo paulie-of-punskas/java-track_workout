@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 @org.springframework.stereotype.Repository
 public class Repository {
 
-    protected Logger logger = Logger.getLogger(Repository.class.getName());
+    protected final Logger logger = Logger.getLogger(Repository.class.getName());
 
     String url = System.getenv("AZURE_DB_URL");
     String userName = System.getenv("AZURE_DB_USER");

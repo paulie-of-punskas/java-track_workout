@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 @Component
 public class DBUtilities {
 
-    protected Logger logger = Logger.getLogger(Repository.class.getName());
+    protected final Logger logger = Logger.getLogger(Repository.class.getName());
 
     public boolean testDBconnection(String url, String user, String password) {
 

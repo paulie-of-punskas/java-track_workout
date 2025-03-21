@@ -11,7 +11,7 @@
 
 ### Connection retry:
 - Error no 40613:
-    - ` 	Database '%.*ls' on server '%.*ls' is not currently available. Please retry the connection later. If the problem persists, contact customer support, and provide them the session tracing ID of '%.*ls'.`
+    - `Database '%.*ls' on server '%.*ls' is not currently available. Please retry the connection later. If the problem persists, contact customer support, and provide them the session tracing ID of '%.*ls'.`
 
 ```bash
 export AZURE_DB_URL="jdbc:sqlserver://<dbname>.database.windows.net:1433;database=db-<dbname>;;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;connectRetryInterval=10;"
