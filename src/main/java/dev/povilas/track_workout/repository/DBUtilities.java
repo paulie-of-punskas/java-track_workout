@@ -34,6 +34,8 @@ public class DBUtilities {
                 logger.info("DBUtilities.testDBconnection(): Error Code: " + e.getErrorCode());
                 if (e.getErrorCode() == 40613) {
                     retryCounter = retryCounter + 1;
+                } else {
+                    retryCounter = 5;
                 }
             }
         }

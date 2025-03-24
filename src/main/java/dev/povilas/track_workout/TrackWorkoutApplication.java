@@ -1,13 +1,10 @@
 package dev.povilas.track_workout;
 
-import dev.povilas.track_workout.model.Training;
 import dev.povilas.track_workout.repository.DBUtilities;
 import dev.povilas.track_workout.repository.Repository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import java.util.List;
-
 
 @SpringBootApplication
 public class TrackWorkoutApplication {
@@ -17,20 +14,12 @@ public class TrackWorkoutApplication {
 
 		DBUtilities dbUtils = context.getBean(DBUtilities.class, "DBUtilities");
 
+//		Test if database is up
 		dbUtils.testDBconnection(System.getenv("AZURE_DB_URL"),
 				System.getenv("AZURE_DB_USER"),
 				System.getenv("AZURE_DB_PASSWORD"));
 
 		Repository repository = context.getBean(Repository.class, "Repository");
-
-		Training tr = new Training("2025-03-20T00:00:00", "kojos", "dviratis", 0.00, 1, 16, 45, 259, "16 km");
-		System.out.println(repository.isTrainingInDB(tr));
-
-		List<Training> trainings = repository.getAllTrainings();
-
-		for (Training training : trainings) {
-			System.out.println(training.date());
-		}
 
 
 //		// sitas veikia, jeigu addTraining() nepriema objekto
