@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 public class Controller {
@@ -16,9 +17,13 @@ public class Controller {
     @Autowired
     Repository repository;
 
+//    java.util.logging.Logger logger =  java.util.logging.Logger.getLogger(this.getClass().getName());
+
+    protected Logger logger = Logger.getLogger(Controller.class.getName());
+
     @GetMapping("/")
     public void index() {
-        System.out.println("Kazkas atejo");
+        logger.info("Kazkas atejo");
     }
 
     @GetMapping("/labas")
@@ -27,7 +32,7 @@ public class Controller {
     }
 
     @GetMapping("/get_all_trainings")
-    public List<Training> getAllWorkouts() {
+    public List<Training> returnAllWorkouts() {
         return repository.getAllTrainings();
     }
 

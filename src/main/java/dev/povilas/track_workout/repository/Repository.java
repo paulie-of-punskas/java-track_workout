@@ -6,18 +6,21 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 @org.springframework.stereotype.Repository
 public class Repository {
 
-    String url = "jdbc:h2:mem:db_workouts";
-    String userName = "sa";
-    String password = "";
+    protected final Logger logger = Logger.getLogger(Repository.class.getName());
+
+    String url = System.getenv("AZURE_DB_URL");
+    String userName = System.getenv("AZURE_DB_USER");
+    String password = System.getenv("AZURE_DB_PASSWORD");
 
     public boolean isTrainingInDB(Training training) {
         List<Training> allTrainings = getAllTrainings();
         for (int j = 0; j < allTrainings.size(); j++) {
-            if (allTrainings.get(j).time().equals(training.time())) {
+            if (allTrainings.get(j).date().equals(training.date())) {
                 return true;
             }
         }
@@ -25,30 +28,28 @@ public class Repository {
     }
 
     public void addTraining(Training training) {
-        String query = "INSERT INTO workouts (date, muscle, exercise, kg, rep, distance, time, cal, comment) " +
+        String query = "INSERT INTO " + System.getenv("AZURE_TABLE_NAME") + " (date, muscle, exercise, kg, rep, comment, distance, time, cal) " +
                 "VALUES ('"
                 + training.date() + "', '"
                 + training.muscle() + "', '"
                 + training.exercise() + "', '"
                 + training.kg() + "', '"
                 + training.rep() + "', '"
+                + training.comment() + "', '"
                 + training.distance() + "', '"
                 + training.time() + "', '"
-                + training.cal() + "', '"
-                + training.comment() +
-                "')";
+                + training.cal() + "')";
 
         try (Connection connection = DriverManager.getConnection(url, userName, password);
              Statement statement = connection.createStatement();) {
             int queryStatus = statement.executeUpdate(query);
             if (queryStatus > 0) {
-                System.out.println(">> Records were added.");
+                logger.info("Repository.addTraining(): Records were added.");
             } else {
-                System.out.println(">> Records could not be added.");
+                logger.info("Repository.addTraining(): Records could not be added.");
             }
         } catch (SQLException e) {
-            System.out.println(">> SQLException occurred in addTraining()");
-            System.out.println(">>   " + e.getMessage());
+            logger.info("Repository.addTraining(): SQLException occurred: " + e.getMessage());
         }
     }
 
@@ -61,7 +62,9 @@ public class Repository {
                             Integer time,
                             Integer cal,
                             String comment) {
-        String query = "INSERT INTO workouts (date, muscle, exercise, kg, rep, distance, time, cal, comment) " +
+
+        String query = ("INSERT INTO " +
+                System.getenv("AZURE_TABLE_NAME") + " (date, muscle, exercise, kg, rep, comment, distance, time, cal) " +
                 "VALUES ('"
                 + date + "', '"
                 + muscle + "', '"
@@ -72,44 +75,44 @@ public class Repository {
                 + time + "', '"
                 + cal + "', '"
                 + comment +
-                "')";
+                "')");
 
         try (Connection connection = DriverManager.getConnection(url, userName, password);
              Statement statement = connection.createStatement();) {
             int queryStatus = statement.executeUpdate(query);
             if (queryStatus > 0) {
-                System.out.println(">> Records were added.");
+                logger.info("Repository.addTraining(): Records were added.");
             } else {
-                System.out.println(">> Records could not be added.");
+                logger.info("Repository.addTraining(): Records could not be added.");
             }
         } catch (SQLException e) {
-            System.out.println(">> SQLException occurred in addTraining()");
-            System.out.println(">>   " + e.getMessage());
+            logger.info("Repository.addTraining(): SQLException occurred: " + e.getMessage());
         }
     }
 
     public List<Training> getAllTrainings() {
         List<Training> trainingsList = new ArrayList<>();
-        String query = "SELECT * FROM workouts";
+        String query = "SELECT * FROM " + System.getenv("AZURE_TABLE_NAME");
         try (Connection connection = DriverManager.getConnection(url, userName, password);
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
 
+            logger.info("Repository.getAllTrainings(): Fetching all trainings from DB.");
+
             while (resultSet.next()) {
-                Training training = new Training(resultSet.getObject(1, LocalDateTime.class),
+                Training training = new Training(resultSet.getString(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
-                        resultSet.getInt(4),
+                        resultSet.getDouble(4),
                         resultSet.getInt(5),
-                        resultSet.getInt(6),
+                        resultSet.getInt(9),
                         resultSet.getInt(7),
                         resultSet.getInt(8),
-                        resultSet.getString(9));
+                        resultSet.getString(6));
                 trainingsList.add(training);
             }
         } catch (SQLException e) {
-            System.out.println(">> SQL Exception occurred in readAllTrainings()");
-            System.out.println(">>   " + e.getMessage());
+            logger.info("Repository.getAllTrainings(): SQLException occurred: " + e.getMessage());
         }
         return trainingsList;
     };
