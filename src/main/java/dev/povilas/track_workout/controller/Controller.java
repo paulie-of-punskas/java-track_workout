@@ -2,6 +2,8 @@ package dev.povilas.track_workout.controller;
 
 import dev.povilas.track_workout.model.Training;
 import dev.povilas.track_workout.repository.Repository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 @RestController
 public class Controller {
@@ -19,7 +20,7 @@ public class Controller {
 
 //    java.util.logging.Logger logger =  java.util.logging.Logger.getLogger(this.getClass().getName());
 
-    protected Logger logger = Logger.getLogger(Controller.class.getName());
+    protected final Logger logger = LoggerFactory.getLogger(Repository.class.getName());
 
     @GetMapping("/")
     public void index() {

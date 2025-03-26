@@ -1,16 +1,17 @@
 package dev.povilas.track_workout.repository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Bean;
 
 import java.sql.*;
-import java.util.logging.Logger;
 
 @Configuration
 public class DBUtilities {
 
-    protected final Logger logger = Logger.getLogger(Repository.class.getName());
+    protected final Logger logger = LoggerFactory.getLogger(Repository.class.getName());
 
     @Bean
     public boolean testDBconnection(@Value("${db.url}") String url,

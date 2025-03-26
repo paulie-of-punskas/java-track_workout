@@ -6,12 +6,16 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 @org.springframework.stereotype.Repository
 public class Repository {
 
-    protected final Logger logger = Logger.getLogger(Repository.class.getName());
+    protected final Logger logger = LoggerFactory.getLogger(Repository.class.getName());
+//    protected final Logger logger = Logger.getLogger(Repository.class.getName());
 
     String url = System.getenv("AZURE_DB_URL");
     String userName = System.getenv("AZURE_DB_USER");
@@ -19,8 +23,8 @@ public class Repository {
 
     public boolean isTrainingInDB(Training training) {
         List<Training> allTrainings = getAllTrainings();
-        for (int j = 0; j < allTrainings.size(); j++) {
-            if (allTrainings.get(j).date().equals(training.date())) {
+        for (Training allTraining : allTrainings) {
+            if (allTraining.date().equals(training.date())) {
                 return true;
             }
         }
@@ -49,7 +53,7 @@ public class Repository {
                 logger.info("Repository.addTraining(): Records could not be added.");
             }
         } catch (SQLException e) {
-            logger.info("Repository.addTraining(): SQLException occurred: " + e.getMessage());
+            logger.warn("Repository.addTraining(): SQLException occurred: `{}`", e.getMessage());
         }
     }
 

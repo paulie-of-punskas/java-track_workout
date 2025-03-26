@@ -71,7 +71,6 @@
 		<!-- Azure SQL related end -->
 
 		<!-- Logback start -->
-		<!--
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
@@ -84,8 +83,13 @@
 			<version>2.1.0-alpha1</version>
 			<scope>test</scope>
 		</dependency>
-		-->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.5.6</version>
+		</dependency>
 		<!-- Logback end -->
+
 	</dependencies>
 
 	<build>

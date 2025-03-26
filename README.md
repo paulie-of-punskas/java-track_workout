@@ -34,18 +34,14 @@ cal (int)
 ```
 
 # To do:
-1. Pakeist `testDBconnection()` i `@Configuration`. Deka to, nereikes `main` issaukdinet to metodo.
-```java
-dbUtils.testDBconnection(System.getenv("AZURE_DB_URL"),
-        System.getenv("AZURE_DB_USER"),
-        System.getenv("AZURE_DB_PASSWORD"));
-
-```
+- disable H2
 
 ### Releases:
 
 #### v0.0.2
-- 
+- `DBUtilities` class is a `@Configuration`
+- `DBUtilities.testDBconnection()` is a `@Bean`
+  - parameter values are defined within `application.properties`
 
 
 #### v0.0.1
