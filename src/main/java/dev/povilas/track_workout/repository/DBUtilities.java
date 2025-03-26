@@ -1,16 +1,21 @@
 package dev.povilas.track_workout.repository;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Bean;
 
 import java.sql.*;
 import java.util.logging.Logger;
 
-@Component
+@Configuration
 public class DBUtilities {
 
     protected final Logger logger = Logger.getLogger(Repository.class.getName());
 
-    public boolean testDBconnection(String url, String user, String password) {
+    @Bean
+    public boolean testDBconnection(@Value("${db.url}") String url,
+                                    @Value("${db.user}") String user,
+                                    @Value("${db.password}") String password) {
 
         String query = "SELECT * FROM track_workout";
         int retryCounter = 1;

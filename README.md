@@ -41,3 +41,14 @@ dbUtils.testDBconnection(System.getenv("AZURE_DB_URL"),
         System.getenv("AZURE_DB_PASSWORD"));
 
 ```
+
+### Releases:
+
+#### v0.0.2
+- 
+
+
+#### v0.0.1
+- initial version
+- stable endpoints
+- logging.Logger used for logging

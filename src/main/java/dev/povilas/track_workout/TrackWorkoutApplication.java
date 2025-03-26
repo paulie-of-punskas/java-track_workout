@@ -15,9 +15,9 @@ public class TrackWorkoutApplication {
 		DBUtilities dbUtils = context.getBean(DBUtilities.class, "DBUtilities");
 
 //		Test if database is up
-		dbUtils.testDBconnection(System.getenv("AZURE_DB_URL"),
-				System.getenv("AZURE_DB_USER"),
-				System.getenv("AZURE_DB_PASSWORD"));
+//		dbUtils.testDBconnection(System.getenv("AZURE_DB_URL"),
+//				System.getenv("AZURE_DB_USER"),
+//				System.getenv("AZURE_DB_PASSWORD"));
 
 		Repository repository = context.getBean(Repository.class, "Repository");
 
