@@ -5,10 +5,7 @@ import dev.povilas.track_workout.repository.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,13 +15,12 @@ public class Controller {
     @Autowired
     Repository repository;
 
-//    java.util.logging.Logger logger =  java.util.logging.Logger.getLogger(this.getClass().getName());
-
-    protected final Logger logger = LoggerFactory.getLogger(Repository.class.getName());
+    protected final Logger logger = LoggerFactory.getLogger(Controller.class);
 
     @GetMapping("/")
-    public void index() {
+    public String index() {
         logger.info("Kazkas atejo");
+        return "index";
     }
 
     @GetMapping("/labas")

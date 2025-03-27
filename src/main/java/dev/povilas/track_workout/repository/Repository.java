@@ -1,25 +1,28 @@
 package dev.povilas.track_workout.repository;
 
 import dev.povilas.track_workout.model.Training;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-
 @org.springframework.stereotype.Repository
 public class Repository {
 
-    protected final Logger logger = LoggerFactory.getLogger(Repository.class.getName());
-//    protected final Logger logger = Logger.getLogger(Repository.class.getName());
+    protected final Logger logger = LoggerFactory.getLogger(Repository.class);
 
-    String url = System.getenv("AZURE_DB_URL");
-    String userName = System.getenv("AZURE_DB_USER");
-    String password = System.getenv("AZURE_DB_PASSWORD");
+    @Value("${db.url}")
+    String url;
+
+    @Value("${db.user}")
+    String userName;
+
+    @Value("${db.password}")
+    String password;
 
     public boolean isTrainingInDB(Training training) {
         List<Training> allTrainings = getAllTrainings();

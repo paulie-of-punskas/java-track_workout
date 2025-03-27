@@ -35,6 +35,7 @@ cal (int)
 
 # To do:
 - disable H2
+- added `@Controller` for Views and `@RestController` for RESTful services/APIs
 
 ### Releases:
 

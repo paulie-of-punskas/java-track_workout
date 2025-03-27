@@ -11,7 +11,7 @@ import java.sql.*;
 @Configuration
 public class DBUtilities {
 
-    protected final Logger logger = LoggerFactory.getLogger(Repository.class.getName());
+    protected final Logger logger = LoggerFactory.getLogger(Repository.class);
 
     @Bean
     public boolean testDBconnection(@Value("${db.url}") String url,
