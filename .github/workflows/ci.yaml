@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Get LTS for java
-        uses: paulie-of-punskas/get-lts-versions@d6f7246f6f16ec8ae9e6b29e084e82473859756e
+        uses: paulie-of-punskas/get-lts-versions@521947edbf993d2701ed4974b1a01aa58a95b64b #v0.1.2
         id: java
         with:
           language: "amazon-corretto"
