@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: 
+      - 'main'
+
+jobs:
+  get-java-lts:
+    name: Get LTS for JAVA
+    runs-on: ubuntu-slim
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print LTS for java
+        uses: paulie-of-punskas/get_lts_versions@77ca183d2bf82d3d49d2a06d31679d8e28b46646
+        with:
+          language: "amazon-corretto"
+          versions_to_fetch: "3"
