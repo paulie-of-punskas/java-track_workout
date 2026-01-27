@@ -15,8 +15,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Print LTS for java
+      - name: Get LTS for java
         uses: paulie-of-punskas/get_lts_versions@66eded25b3cacf6aa8f15693a581428c2916d40a
+        id: java
         with:
           language: "amazon-corretto"
           versions_to_fetch: "3"
+
+      - name: Print returned values
+        shell: bash
+        run: echo "${{ steps.java.outputs.lts_versions }}"
