@@ -32,5 +32,5 @@ jobs:
       - name: Print returned values
         shell: bash
         run: |
-          echo "${{ steps.java-old.outputs.lts_versions }}"
-          echo "${{ steps.java-new.outputs.lts_versions }}"
+          echo "${{ toJSON(steps.java-old.outputs.lts_versions) }}"
+          echo "${{ toJson(steps.java-new.outputs.lts_versions) }}"
