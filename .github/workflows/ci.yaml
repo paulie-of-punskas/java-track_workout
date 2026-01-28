@@ -19,16 +19,14 @@ jobs:
         uses: paulie-of-punskas/get-lts-versions@521947edbf993d2701ed4974b1a01aa58a95b64b #v0.1.2
         id: java-old
         with:
-          # language: "amazon-corretto"
-          language: "python"
+          language: "amazon-corretto"
           versions_to_fetch: "3"
 
       - name: Get LTS for java - v013
         uses: paulie-of-punskas/get-lts-versions@e3b8b9faf26d300a3aa4d8ab0b2c40cb0936d0c2 #v0.1.3
         id: java-new
         with:
-          # language: "amazon-corretto"
-          language: "python"
+          language: "amazon-corretto"
           versions_to_fetch: "3"
           
       - name: Print returned values
