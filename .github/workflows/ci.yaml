@@ -9,7 +9,9 @@ on:
 jobs:
   get-java-lts:
     name: Get LTS for JAVA
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-slim
+    outputs:
+      lts_version: ${{ steps.outputJavaVersion.outputs.lts_java_version }}
 
     steps:
       - name: Checkout code
@@ -17,19 +19,28 @@ jobs:
 
       - name: Get LTS for java - v012
         uses: paulie-of-punskas/get-lts-versions@521947edbf993d2701ed4974b1a01aa58a95b64b #v0.1.2
-        id: java-old
+        id: getJavaVersion
         with:
           language: "eclipse-temurin"
           versions_to_fetch: "3"
 
       - name: Print returned values
+        id: outputJavaVersion
         shell: bash
         run: |
-          echo "${{ toJSON(steps.java-old.outputs.lts_versions) }}"
-
-      - name: Set up JDK 11 for x64
+          echo "lts_java_version=${{ toJSON(steps.getJavaVersion.outputs.lts_versions) }}" >> $GITHUB_OUTPUT
+  
+  setup-lts-environment:  
+    name: Setup environment
+    runs-on: ubuntu-22.04
+    needs: get-java-lts
+    strategy:
+      matrix:
+        lts_java_version: ${{ fromJson(needs.get-java-lts.outputs.lts_version) }}
+    steps:
+      - name: Set up latest JDK for x64
         uses: actions/setup-java@v4
         with:
-            java-version: "${{ toJSON(steps.java-old.outputs.lts_versions) }}"
-            distribution: "temurin"
-            architecture: x64
+          java-version: ${{ matrix.lts_java_version }}
+          distribution: "temurin"
+          architecture: x64
