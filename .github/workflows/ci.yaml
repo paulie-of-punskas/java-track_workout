@@ -39,5 +39,5 @@ jobs:
         uses: actions/setup-java@v4
         with:
             java-version: "${{ steps.java-old.outputs.lts_versions }}"
-            distribution: "temurin"
+            distribution: "corretto"
             architecture: x64
