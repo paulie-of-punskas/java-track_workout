@@ -9,7 +9,7 @@ on:
 jobs:
   get-java-lts:
     name: Get LTS for JAVA
-    runs-on: ubuntu
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout code
