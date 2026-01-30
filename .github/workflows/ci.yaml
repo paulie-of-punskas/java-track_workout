@@ -2,14 +2,14 @@ name: CI
 
 on:
   push:
-    branches: 
+    branches:
       - 'main'
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   get-java-lts:
     name: Get LTS for JAVA
-    runs-on: ubuntu-slim
+    runs-on: ubuntu
 
     steps:
       - name: Checkout code
@@ -28,9 +28,15 @@ jobs:
         with:
           language: "amazon-corretto"
           versions_to_fetch: "3"
-          
+
       - name: Print returned values
         shell: bash
         run: |
           echo "${{ toJSON(steps.java-old.outputs.lts_versions) }}"
-          echo "${{ toJson(steps.java-new.outputs.lts_versions) }}"
+          echo "${{ toJSON(steps.java-new.outputs.lts_versions) }}"
+
+      - name: Set up JDK 11 for x64
+        uses: actions/setup-java@v4
+        with:
+            java-version: "${{ fromJson(steps.java-old.outputs.lts_versions) }}"
+            architecture: x64
