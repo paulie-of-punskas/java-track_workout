@@ -17,8 +17,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Get LTS for java - v012
-        uses: paulie-of-punskas/get-lts-versions@521947edbf993d2701ed4974b1a01aa58a95b64b #v0.1.2
+      - name: Get LTS for java - v013 - prerelease
+        uses: paulie-of-punskas/get-lts-versions@2b9b737bf4e7aaba6341a2cf45789439fc1a3c96 #v0.1.3 pre-release
         id: getJavaVersion
         with:
           language: "eclipse-temurin"
