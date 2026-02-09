@@ -8,7 +8,7 @@ on:
 
 jobs:
   get-java-lts:
-    name: Get LTS for JAVA
+    name: Get LTS for Java
     runs-on: ubuntu-slim
     outputs:
       lts_version: ${{ steps.outputJavaVersion.outputs.lts_java_version }}
@@ -17,8 +17,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Get LTS for java - v013 - prerelease
-        uses: paulie-of-punskas/get-lts-versions@2b9b737bf4e7aaba6341a2cf45789439fc1a3c96 #v0.1.3 pre-release
+      - name: Get LTS for Java Temurin JDK
+        uses: paulie-of-punskas/get-lts-versions@2c1d8ce4bdddd6d6dffc557b7c5f373ed14fc626 #v0.1.3
         id: getJavaVersion
         with:
           language: "eclipse-temurin"
