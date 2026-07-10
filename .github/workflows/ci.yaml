@@ -11,7 +11,7 @@ jobs:
     name: Get LTS for Java
     runs-on: ubuntu-slim
     outputs:
-      lts_versions_fetched: ${{ steps.outputJavaVersion.outputs.lts_versions }}
+      lts_versions_fetched: ${{ steps.getJavaVersion.outputs.lts_versions }}
 
     steps:
       - name: Checkout code
