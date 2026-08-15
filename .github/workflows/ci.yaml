@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Get LTS for Java Temurin JDK
-        uses: paulie-of-punskas/get-lts-versions@2366ce5adb10deb313db94aa5f286bae72cc7389 #v1.0.3 - pre release
+        uses: paulie-of-punskas/get-lts-versions@a9c9bfd20966a16d3bfde2d4f0ce07130b25f821 #v1.0.3 - pre release
         id: getJavaVersion
         with:
           language: ${{ env.language-name }}
