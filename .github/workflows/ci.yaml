@@ -18,10 +18,9 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Get LTS for Java Temurin JDK
-      # #v1.0.3.1 pre-release with trimmed down index.ts
         uses: paulie-of-punskas/get-lts-versions@ecb5fdacd088858ba095f069e77b31f5048ccf13 # v1.0.4
         id: getJavaVersion
         with:
@@ -43,7 +42,7 @@ jobs:
         lts_java_version: ${{ fromJson(needs.get-java-lts.outputs.lts_versions_fetched) }}
     steps:
       - name: Set up latest JDK for x64
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
         with:
           java-version: ${{ matrix.lts_java_version }}
           distribution: ${{ env.language-name }}
