@@ -22,7 +22,7 @@ jobs:
 
       - name: Get LTS for Java Temurin JDK
       # #v1.0.3.1 pre-release with trimmed down index.ts
-        uses: paulie-of-punskas/get-lts-versions@0a56bcbd71f64dae1fa36b7e163ef69745bc1a72 #v1.0.3.1 pre-release
+        uses: paulie-of-punskas/get-lts-versions@ecb5fdacd088858ba095f069e77b31f5048ccf13 # v1.0.4
         id: getJavaVersion
         with:
           language: ${{ env.language-name }}
