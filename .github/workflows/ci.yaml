@@ -18,20 +18,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       - name: Get LTS for Java Temurin JDK
-        uses: paulie-of-punskas/get-lts-versions@ecb5fdacd088858ba095f069e77b31f5048ccf13 # v1.0.4
+        uses: paulie-of-punskas/get-lts-versions@42c4bebdaf53b932d3dd67e428437f78d8b4a7a0 #v1.0.5
         id: getJavaVersion
         with:
           language: ${{ env.language-name }}
-          versions_to_fetch: "3"
-
-      - name: Print returned values
-        id: outputJavaVersion
-        shell: bash
-        run: |
-          echo "Fetched LTS versions: ${{ steps.getJavaVersion.outputs.lts_versions }}"
+          versions_to_fetch: "2"
 
   setup-java-environment:
     name: Setup environment
@@ -42,7 +36,7 @@ jobs:
         lts_java_version: ${{ fromJson(needs.get-java-lts.outputs.lts_versions_fetched) }}
     steps:
       - name: Set up latest JDK for x64
-        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+        uses: actions/setup-java@dd06d9cba3e5552c54d9f8ea23572deb30010f7c #v6.0.0
         with:
           java-version: ${{ matrix.lts_java_version }}
           distribution: ${{ env.language-name }}
