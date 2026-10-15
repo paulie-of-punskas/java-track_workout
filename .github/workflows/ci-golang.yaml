@@ -18,10 +18,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@48af1efe0a6e59552e4d1aa43beb0a069edb2c5f # v7.0.0
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       - name: Get LTS for Java Temurin JDK
-        uses: paulie-of-punskas/get-lts-versions@7fb9988c199343be72eedffcdce4e091cc4efd4a # golang
+        uses: paulie-of-punskas/get-lts-versions@48af1efe0a6e59552e4d1aa43beb0a069edb2c5f # golang
         id: getJavaVersion
         with:
           language: ${{ env.language-name }}
