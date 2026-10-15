@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       - name: Get LTS for Java Temurin JDK
-        uses: paulie-of-punskas/get-lts-versions@d4cf6fd8be22ddb3bf84731209551ecd06bea0c3 # golang
+        uses: paulie-of-punskas/get-lts-versions@7fb9988c199343be72eedffcdce4e091cc4efd4a # golang
         id: getJavaVersion
         with:
           language: ${{ env.language-name }}
